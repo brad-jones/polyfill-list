@@ -1,0 +1,45 @@
+{
+    "name": "@brad-jones/polyfill-list",
+    "version": "0.0.0-semantic-release",
+    "description": "A simple tool to generate a list of required polyfills, given a \"browserslist\" config.",
+    "author": "Brad Jones <brad@bjc.id.au>",
+    "repository": "brad-jones/polyfill-list",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "commit": "commit",
+        "commitmsg": "commitlint -e",
+        "clean": "shx rm -rf ./dist*",
+        "build": "tsc -P ./src/tsconfig.json",
+        "rebuild": "yarn clean; yarn build;",
+        "test": "ts-node -P ./tests/tsconfig.json ./tests/runner.ts",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    },
+    "dependencies": {
+        "browserslist": "^2.8.0",
+        "polyfill-service": "^3.22.0",
+        "semver": "^5.4.1",
+        "shx": "^0.2.2"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^4.2.1",
+        "@commitlint/config-angular": "^4.2.1",
+        "@commitlint/prompt-cli": "^4.2.1",
+        "@types/node": "^8.0.47",
+        "@types/semver": "^5.4.0",
+        "@types/shelljs": "^0.7.5",
+        "condition-circle": "^1.5.0",
+        "husky": "^0.14.3",
+        "semantic-release": "^8.2.0",
+        "semantic-release-cli": "^3.2.4",
+        "ts-node": "^3.3.0",
+        "typescript": "^2.6.1"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "release": {
+        "verifyConditions": "condition-circle"
+    }
+}
