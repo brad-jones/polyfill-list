@@ -32,6 +32,7 @@ export class PolyFillListFixture
     @Test()
     public browserVersionMatchesThrowsWhenBogusVersionProvided()
     {
-        Expect(() => (new PolyFillList() as any).browserVersionMatches('abc', '1')).toThrowError(Error, "Could not convert 'abc' into semver");
+        Expect(() => (new PolyFillList() as any).browserVersionMatches('abc', '1'))
+            .toThrowError(Error, "Could not convert 'abc' into semver");
     }
 }
