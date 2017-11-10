@@ -3,6 +3,13 @@ import { Expect, Test, AsyncTest, Timeout, TestCase } from "alsatian";
 
 export class PolyFillListFixture
 {
+    @AsyncTest()
+    @TestCase(['Chrome 62'], ["Array.prototype.values","Promise.prototype.finally","setImmediate"])
+    public async GeneratePolyFillListTest(input: string[], expected)
+    {
+        Expect(await (new PolyFillList(input)).GeneratePolyFillList()).toEqual(expected);
+    }
+
     @TestCase([], [])
     @TestCase(['foo 123'], [{name: 'foo', version: '123'}])
     @TestCase(['foo 1.2.3-1.2.4'], [{name: 'foo', version: '1.2.3'}, {name: 'foo', version: '1.2.4'}])
