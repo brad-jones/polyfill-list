@@ -8,3 +8,4 @@ commitlint.config.js
 tsconfig.json
 src
 tests
+test-results
