@@ -50,6 +50,11 @@ export class PolyFillList implements IPolyFillList
 
             let fillMeta = await polyFillService.describePolyfill(fill);
 
+            // If the word "deprecated" is mentioned anywhere in the metadata,
+            // in the notes section for example, we will exclude it, a developer
+            // would then need to manually add such polyfills to the list.
+            if (JSON.stringify(fillMeta).includes('deprecated')) continue;
+
             // Ignore any polyfills that do not have a browsers section
             // NOTE: AudioContext appears to be the only one effected by this.
             if (!fillMeta.browsers) continue;
