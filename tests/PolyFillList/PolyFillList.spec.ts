@@ -1,8 +1,16 @@
-import { PolyFillList } from '../../dist';
+import { PolyFillList, IBrowser } from '../../dist';
 import { Expect, Test, AsyncTest, Timeout, TestCase } from "alsatian";
 
 export class PolyFillListFixture
 {
+    @TestCase([], [])
+    @TestCase(['foo 123'], [{name: 'foo', version: '123'}])
+    @TestCase(['foo 1.2.3-1.2.4'], [{name: 'foo', version: '1.2.3'}, {name: 'foo', version: '1.2.4'}])
+    public convertBrowsersListToIBrowserArrayTest(input: string[], expected: IBrowser[])
+    {
+        Expect((new PolyFillList() as any).convertBrowsersListToIBrowserArray(input)).toEqual(expected);
+    }
+
     @TestCase({ browsersListVersion: 'abc', polyFillServiceVersion: 'abc' }, true)
     @TestCase({ browsersListVersion: 'abc', polyFillServiceVersion: '*' }, true)
     @TestCase({ browsersListVersion: 'all', polyFillServiceVersion: 'abc' }, true)
