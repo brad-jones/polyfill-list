@@ -5,6 +5,7 @@
         "declaration": true,
         "sourceMap": true,
         "outDir": "../dist",
-        "removeComments": true
+        "removeComments": true,
+        "importHelpers": true
     }
 }
