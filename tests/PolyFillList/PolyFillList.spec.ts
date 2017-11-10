@@ -20,6 +20,10 @@ export class PolyFillListFixture
     @TestCase({ browsersListVersion: '1', polyFillServiceVersion: '2' }, false)
     @TestCase({ browsersListVersion: '1.0', polyFillServiceVersion: '2' }, false)
     @TestCase({ browsersListVersion: '1.0.0', polyFillServiceVersion: '2' }, false)
+    @TestCase({ browsersListVersion: '10', polyFillServiceVersion: '6 - 8' }, false)
+    @TestCase({ browsersListVersion: '7', polyFillServiceVersion: '6 - 8' }, true)
+    @TestCase({ browsersListVersion: '7', polyFillServiceVersion: '<8' }, true)
+    @TestCase({ browsersListVersion: '7', polyFillServiceVersion: '>8' }, false)
     public browserVersionMatchesTest(input: { browsersListVersion: string, polyFillServiceVersion: string }, expected: boolean)
     {
         Expect((new PolyFillList() as any).browserVersionMatches(input.browsersListVersion, input.polyFillServiceVersion)).toBe(expected);
