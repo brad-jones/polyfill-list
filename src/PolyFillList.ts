@@ -39,12 +39,14 @@ export class PolyFillList implements IPolyFillList
 
         for (let fill of await polyFillService.listAllPolyfills())
         {
-            // The Locales add lots of noise, ignore for now
-            if (fill.startsWith('Intl')) continue;
             // Ignore all fills that start with an underscore.
             // These appear to be only used as dependecies to other polyfills.
             // ie: They do not add anything directly to the global environment.
             if (fill.startsWith('_')) continue;
+
+            // Ignore all the actual locales, specfic locales would
+            // need to be added manually as required by the developer.
+            if (fill.startsWith('Intl.')) continue;
 
             let fillMeta = await polyFillService.describePolyfill(fill);
 
