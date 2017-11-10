@@ -10,29 +10,41 @@
     "scripts": {
         "commit": "commit",
         "commitmsg": "commitlint -e",
-        "clean": "shx rm -rf ./dist*",
-        "build": "tsc -P ./src/tsconfig.json",
+        "clean": "shx rm -rf ./dist*; shx rm -rf ./.nyc_output; shx rm -rf ./test-results",
+        "build": "tsc -P ./src/tsconfig.json; yarn build-pf;",
+        "build-pf": "yarn --cwd ./node_modules/polyfill-service build",
         "rebuild": "yarn clean; yarn build;",
         "test": "ts-node -P ./tests/tsconfig.json ./tests/runner.ts",
+        "cover": "nyc --exclude \"tests/**\" --report-dir ./test-results/coverage --reporter=html --reporter=clover yarn test",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
     },
+    "bundledDependencies": [
+        "polyfill-service"
+    ],
     "dependencies": {
         "browserslist": "^2.8.0",
-        "polyfill-service": "^3.22.0",
         "semver": "^5.4.1",
-        "shx": "^0.2.2"
+        "shelljs": "^0.7.8",
+        "tslib": "^1.8.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^4.2.1",
         "@commitlint/config-angular": "^4.2.1",
         "@commitlint/prompt-cli": "^4.2.1",
+        "@types/clear-require": "^2.0.0",
         "@types/node": "^8.0.47",
         "@types/semver": "^5.4.0",
         "@types/shelljs": "^0.7.5",
+        "alsatian": "^2.0.0",
         "condition-circle": "^1.5.0",
         "husky": "^0.14.3",
+        "nyc": "^11.3.0",
+        "polyfill-service": "^3.22.0",
         "semantic-release": "^8.2.0",
         "semantic-release-cli": "^3.2.4",
+        "shx": "^0.2.2",
+        "tap-spec": "^4.1.1",
+        "tap-xunit": "^1.7.0",
         "ts-node": "^3.3.0",
         "typescript": "^2.6.1"
     },
