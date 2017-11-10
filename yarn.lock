@@ -4245,9 +4245,9 @@ plur@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/plur/-/plur-1.0.0.tgz#db85c6814f5e5e5a3b49efc28d604fec62975156"
 
-polyfill-service@^3.22.0:
-  version "3.22.0"
-  resolved "https://registry.yarnpkg.com/polyfill-service/-/polyfill-service-3.22.0.tgz#affed8830ded5291b4bd20f45512dd5645e78da8"
+polyfill-service@3.21.0:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/polyfill-service/-/polyfill-service-3.21.0.tgz#27abdec618723c650819aa6d31bf8559e2e884ae"
   dependencies:
     Base64 "^1.0.0"
     array.of "^0.1.1"
